@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture_EF_Advanced_Querying", "Lecture_EF_Advanced_Querying\Lecture_EF_Advanced_Querying.csproj", "{D9BE1ECE-69BA-40D6-9BAD-DB87F05517AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9BE1ECE-69BA-40D6-9BAD-DB87F05517AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BE1ECE-69BA-40D6-9BAD-DB87F05517AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BE1ECE-69BA-40D6-9BAD-DB87F05517AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BE1ECE-69BA-40D6-9BAD-DB87F05517AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A86AC07-5D4A-4D17-9967-F62438EEA8D9}
+	EndGlobalSection
+EndGlobal

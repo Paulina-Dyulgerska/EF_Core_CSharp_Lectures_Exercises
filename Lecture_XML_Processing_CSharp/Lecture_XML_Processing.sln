@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture_XML_Processing", "Lecture_XML_Processing\Lecture_XML_Processing.csproj", "{C9B8E923-236B-4BF9-8CFB-E3CDCBA0DFBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlAttributesDemo", "XmlAttributesDemo\XmlAttributesDemo.csproj", "{EC620540-FD44-443F-8E6F-94C9C90760F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9B8E923-236B-4BF9-8CFB-E3CDCBA0DFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B8E923-236B-4BF9-8CFB-E3CDCBA0DFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B8E923-236B-4BF9-8CFB-E3CDCBA0DFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B8E923-236B-4BF9-8CFB-E3CDCBA0DFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC620540-FD44-443F-8E6F-94C9C90760F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC620540-FD44-443F-8E6F-94C9C90760F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC620540-FD44-443F-8E6F-94C9C90760F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC620540-FD44-443F-8E6F-94C9C90760F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {957DFA41-2E04-4694-AAAE-3573887FACEE}
+	EndGlobalSection
+EndGlobal

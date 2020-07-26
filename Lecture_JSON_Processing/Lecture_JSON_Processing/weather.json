@@ -1,0 +1,14 @@
+{
+  "TemperatureC": 30,
+  "TemperaturesC": [
+    35,
+    25,
+    21,
+    33
+  ],
+  "LongNameOfThisDecimalProperty": 0.0,
+  "NullableProperty": null,
+  "Summary2": null,
+  "Map": 3243335,
+  "dateOfTheForecast": "2020-07-18T19:55:54.8568531Z"
+}

@@ -1,0 +1,7 @@
+{
+  "connectionStrings": [
+    "Server.\\SQLEXPRESS",
+    "Server.\\SQLEXPRESS;Integrated Security=true;",
+    "UserId=Paulina;Password=1"
+  ]
+}

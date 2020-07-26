@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
+
+namespace ProductShop.Models
+{
+    public class CategoryProduct
+    {
+        [ForeignKey(nameof(Category))]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        [ForeignKey(nameof(Product))]
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+    }
+}

@@ -11,7 +11,7 @@ namespace RealEstates.Models
     {
         public RealEstateProperty()
         {
-            this.RealEstatePropertyTags = new HashSet<RealEstatePropertyTag>();
+            this.Tags = new HashSet<RealEstatePropertyTag>();
         }
         public int Id { get; set; }
 
@@ -53,7 +53,7 @@ namespace RealEstates.Models
         public int Price { get; set; }
 
         //[NotMapped] //ne e nujno da go kazwam, to e qsno, che ne se mappva v DB-a!!!
-        public virtual ICollection<RealEstatePropertyTag> RealEstatePropertyTags { get; set; }
+        public virtual ICollection<RealEstatePropertyTag> Tags { get; set; }
 
     }
 }

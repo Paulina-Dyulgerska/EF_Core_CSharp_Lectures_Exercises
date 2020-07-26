@@ -167,13 +167,13 @@ namespace RealEstates.Data.Migrations
             modelBuilder.Entity("RealEstates.Models.RealEstatePropertyTag", b =>
                 {
                     b.HasOne("RealEstates.Models.RealEstateProperty", "RealEstateProperty")
-                        .WithMany("RealEstatePropertyTags")
+                        .WithMany("Tags")
                         .HasForeignKey("RealEstatePropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RealEstates.Models.Tag", "Tag")
-                        .WithMany("RealEstatePropertyTags")
+                        .WithMany("Tags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

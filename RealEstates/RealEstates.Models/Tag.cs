@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstates.Models
 {
@@ -7,7 +8,7 @@ namespace RealEstates.Models
     {
         public Tag()
         {
-            this.RealEstatePropertyTags = new HashSet<RealEstatePropertyTag>();
+            this.Tags = new HashSet<RealEstatePropertyTag>();
         }
         public int Id { get; set; }
 
@@ -17,6 +18,7 @@ namespace RealEstates.Models
         public string Description { get; set; }
 
         //v tazi collection shte si dyrja vsichki imoti ot tozi Tag i posle moga lesno da si gi vzimam!
-        public virtual ICollection<RealEstatePropertyTag> RealEstatePropertyTags { get; set; }
+        //[NotMapped] //ne e nujno da go kazwam, to e qsno, che ne se mappva v DB-a!!!
+        public virtual ICollection<RealEstatePropertyTag> Tags { get; set; }
     }
 }

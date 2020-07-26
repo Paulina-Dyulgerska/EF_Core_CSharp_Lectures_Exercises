@@ -24,12 +24,16 @@ namespace RealEstates.Models
 
         public int? TotalNumberOfFloors { get; set; }
 
-        [ForeignKey("District")]
+        //ako si krystq pravilno propertytata ne mi trqbwat tezi attributi, EF sam shte se seti i shte gi napravi
+        //[ForeignKey("District")]
+        [ForeignKey(nameof(District))]
         public int DistrictId { get; set; }
+        //[ForeignKey("DistrictId")] //ne e nujno towa, EF sam se seshta.
         public virtual District District { get; set; }
 
         public int? Year { get; set; }
 
+        //ako si krystq pravilno propertytata ne mi trqbwat tezi attributi, EF sam shte se seti i shte gi napravi
         [ForeignKey("PropertyType")]
         public int PropertyTypeId { get; set; }
         public virtual PropertyType PropertyType { get; set; }
@@ -41,12 +45,14 @@ namespace RealEstates.Models
         //povtarq kato zapis v DB-a, towa neshto da go iznasqm v otdelna tablica!!!! Towa napravih tuk s
         //tozi nov class BuildingType, kato vyzmojnite varianti na type na sgradi shte se pazqt v otdelna tablica
         //v DB-a, a v RealEstateProperty-to shte se pazi samo id-to na iskaniq type!
+        //ako si krystq pravilno propertytata ne mi trqbwat tezi attributi, EF sam shte se seti i shte gi napravi
         [ForeignKey("BuildingType")]
         public int BuildingTypeId { get; set; }
         public virtual BuildingType BuildingType { get; set; }
 
         public int Price { get; set; }
 
+        //[NotMapped] //ne e nujno da go kazwam, to e qsno, che ne se mappva v DB-a!!!
         public virtual ICollection<RealEstatePropertyTag> RealEstatePropertyTags { get; set; }
 
     }

@@ -1,12 +1,15 @@
-﻿using System;
+﻿using RealEstates.Data;
+using System;
 
 namespace RealEstates.ConsoleApplication
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main( )
         {
-            Console.WriteLine("Hello World!");
+            var dbContext = new RealEstateContext();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
         }
     }
 }

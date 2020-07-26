@@ -25,8 +25,8 @@ namespace RealEstates.Models
         public int? TotalNumberOfFloors { get; set; }
 
         //ako si krystq pravilno propertytata ne mi trqbwat tezi attributi, EF sam shte se seti i shte gi napravi
-        //[ForeignKey("District")]
-        [ForeignKey(nameof(District))]
+        //[ForeignKey("District")] //ne e nujno towa, EF sam se seshta.
+        [ForeignKey(nameof(District))] //ne e nujno towa, EF sam se seshta.
         public int DistrictId { get; set; }
         //[ForeignKey("DistrictId")] //ne e nujno towa, EF sam se seshta.
         public virtual District District { get; set; }

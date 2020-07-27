@@ -22,7 +22,7 @@ namespace RealEstates.Models
         //ne mi e pozwolen null, to trqbwa da pisha 0, koeto e realen etaj i e greshna informaciq.
         //za TotalNumberOfFloors vaji syshtoto.
 
-        public int? TotalNumberOfFloors { get; set; }
+        public int? TotalFloors { get; set; }
 
         //ako si krystq pravilno propertytata ne mi trqbwat tezi attributi, EF sam shte se seti i shte gi napravi
         //[ForeignKey("District")] //ne e nujno towa, EF sam se seshta.

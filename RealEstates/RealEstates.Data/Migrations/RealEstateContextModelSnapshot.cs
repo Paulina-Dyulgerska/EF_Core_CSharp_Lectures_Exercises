@@ -92,7 +92,7 @@ namespace RealEstates.Data.Migrations
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TotalNumberOfFloors")
+                    b.Property<int?>("TotalFloors")
                         .HasColumnType("int");
 
                     b.Property<int?>("Year")

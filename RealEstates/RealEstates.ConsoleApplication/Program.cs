@@ -24,6 +24,7 @@ namespace RealEstates.ConsoleApplication
             dbContext.Database.Migrate();
 
             IRealEstatePropertiesService propertiesService = new RealEstatePropertiesService(dbContext);
+            IDistrictService districtService = new DistrictService(dbContext);
 
             //propertiesService.Create("Стрелбище", 190, 2001, 250000, "5-стаен", "Тухла", 4, 9);
             //propertiesService.Create("Дианабад", 190, 2011, 350000, "6-стаен", "ЕПК", 6, 9);
@@ -33,24 +34,37 @@ namespace RealEstates.ConsoleApplication
             //propertiesService.Create("Гео Милев", 152, 2015,456000, "4-стаен", "Тухла", 3, 6);
             //propertiesService.Create("Достоевски", 67, 1898,45600, "4-стаен", "Тухла", 3, 6);
 
-            IDistrictService districtService = new DistrictService(dbContext);
-            
-            //var districts = districtService.GetTopDistrictsByAveragePrice();
-            
-            //foreach (var district in districts)
-            //{
-            //    Console.WriteLine($"{district.Name} => Price: {district.minPrice} - {district.maxPrice}; " +
-            //        $"AveragePrice: {district.AveragePrice}; Count: {district.RealEstatePropertiesCount}");
-            //};
+            var districts = districtService.GetTopDistrictsByAveragePrice(100);
 
-            var districtsByNumberOfProperties = districtService.GetTopDistrictsByNumberOfProperties();
-
-            foreach (var district in districtsByNumberOfProperties)
+            foreach (var district in districts)
             {
                 Console.WriteLine($"{district.Name} => Price: {district.minPrice} - {district.maxPrice}; " +
-                    $"AveragePrice: {district.AveragePrice:0.00}; Count: {district.RealEstatePropertiesCount}");
+                    $"AveragePrice: {district.AveragePrice:0.00}; " +
+                    $"AveragePrice for m²: {district.AveragePricePerSquareMeter:0.00}; " +
+                    $"Count: {district.RealEstatePropertiesCount}");
             };
 
+            //var districtsByNumberOfProperties = districtService.GetTopDistrictsByNumberOfProperties();
+
+            //foreach (var district in districtsByNumberOfProperties)
+            //{
+            //    Console.WriteLine($"{district.Name} => Price: {district.minPrice} - {district.maxPrice}; " +
+            //        $"AveragePrice: {district.AveragePrice:0.00}; Count: {district.RealEstatePropertiesCount}");
+            //};
+
+            //---Console UI:
+            //Console.Write("Enter min Price: ");
+            //var minPrice = int.Parse(Console.ReadLine());
+            //Console.Write("Enter max Price: ");
+            //var maxPrice = int.Parse(Console.ReadLine());
+
+            //var properties = propertiesService.SearchByPrice(minPrice, maxPrice);
+
+            //foreach (var p in properties)
+            //{
+            //    Console.WriteLine($"{p.District}; Size: {p.Size} m²; PropertyType: {p.PropertyType}; " +
+            //        $"BuildingType: {p.BuildingType}; Year: {p.Year}; Floor: {p.Floor}; {p.Price}€");
+            //}
 
         }
     }

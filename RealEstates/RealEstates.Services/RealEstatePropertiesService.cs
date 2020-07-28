@@ -118,6 +118,7 @@ namespace RealEstates.Services
                 .Select(MapToRealEstatePropertyViewModel())
                 .OrderByDescending(x => x.Year)
                 .ThenByDescending(x => x.Size)
+                .ThenByDescending(x => x.District)
                 .ToList();
         }
 
@@ -126,6 +127,8 @@ namespace RealEstates.Services
             return this.db.RealEstateProperties.Where(x => x.Price >= minPrice && x.Price <= maxPrice)
                 .Select(MapToRealEstatePropertyViewModel())
                 .OrderBy(x => x.Price)
+                .ThenByDescending(x => x.Size)
+                .ThenByDescending(x => x.District)
                 .ToList();
         }
 
@@ -236,7 +239,15 @@ namespace RealEstates.Services
                 Price = x.Price,
                 PropertyType = x.PropertyType.Name,
                 BuildingType = x.BuildingType.Name,
-                Floor = ((x.Floor ?? 0) + '/' + (x.TotalFloors ?? 0)).ToString(),
+                Floor = $"{x.Floor ?? 0} / {x.TotalFloors.ToString() ?? "N.A."}",
+                //takiva zapisi izlishno da mu kazwam che celiqt mi type na celiqt
+                //mi izraz e string, inache moje da mi gyrmi s NULL TypeMapping v SQL Tree error!!!!,
+                //ako gi ostavq bez $"" mi dava shantavi neshta,
+                //zashtoto SQL - a se mychi da gi chete kato cifri pyrviqt izraz: x.Floor ?? 0 i posle se obyrkva da konkatenira int - ta,
+                //kojto e poluchil ot tozi izraz, sys / i sys x.TotalFloors.ToString() ?? "N.A."!!! Ako go ostavq taka: 
+                //Floor = x.Floor ?? 0 + '/' + x.TotalFloors,
+                //to EF - ka misli za int pyrviqt izraz i se mychi da go sybere sys /,
+                //a SQL nqma Mapping m / u int i Char i ne znae kakwo da pravi!!!!!
             };
         }
 

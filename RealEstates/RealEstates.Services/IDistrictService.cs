@@ -1,7 +1,5 @@
-﻿using RealEstates.Models;
-using System;
+﻿using RealEstates.Services.Models;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RealEstates.Services
 {

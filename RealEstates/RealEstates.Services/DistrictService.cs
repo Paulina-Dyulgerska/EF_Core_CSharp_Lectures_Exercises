@@ -1,5 +1,6 @@
 ﻿using RealEstates.Data;
 using RealEstates.Models;
+using RealEstates.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace RealEstates.Services
         {
             return this.db.Districts
                 .Select(MapToDistrictViewModel())
-                .OrderByDescending(d => d.AveragePrice)
+                .OrderByDescending(d => d.AveragePricePerSquareMeter)
                 .ThenBy(d => d.Name)
                 .Take(count)
                 .ToList();
@@ -31,7 +32,7 @@ namespace RealEstates.Services
             return db.Districts
                 .Select(MapToDistrictViewModel())
                 .OrderByDescending(d => d.RealEstatePropertiesCount)
-                .ThenByDescending(d=>d.AveragePrice)
+                .ThenByDescending(d=>d.AveragePricePerSquareMeter)
                 .ThenBy(d=>d.Name)
                 .Take(count)
                 .ToList();
@@ -42,7 +43,8 @@ namespace RealEstates.Services
             return d => new DistrictViewModel
             {
                 Name = d.Name,
-                AveragePrice = d.RealEstateProperties.Average(p => p.Price),
+                AveragePrice = d.RealEstateProperties.Average(p => p.Price), 
+                AveragePricePerSquareMeter = d.RealEstateProperties.Average(p => (double)p.Price / p.Size),
                 maxPrice = d.RealEstateProperties.Max(p => p.Price),
                 minPrice = d.RealEstateProperties.Min(p => p.Price),
                 RealEstatePropertiesCount = d.RealEstateProperties.Count,

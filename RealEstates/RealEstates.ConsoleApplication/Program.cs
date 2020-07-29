@@ -34,7 +34,7 @@ namespace RealEstates.ConsoleApplication
             //propertiesService.Create("Гео Милев", 152, 2015,456000, "4-стаен", "Тухла", 3, 6);
             //propertiesService.Create("Достоевски", 67, 1898,45600, "4-стаен", "Тухла", 3, 6);
 
-            var districts = districtService.GetTopDistrictsByAveragePrice(100);
+            var districts = districtService.GetTopDistrictsByAveragePrice(1000);
 
             foreach (var district in districts)
             {

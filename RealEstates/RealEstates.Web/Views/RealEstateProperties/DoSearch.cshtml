@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RealEstates.Services.Models.PropertyViewModel>
+<h4>Search results:</h4>
+<table class="table table-striped table-hover table-sm table-bordered">
+    <tr>
+        <th>District</th>
+        <th>Building Type</th>
+        <th>Property Type</th>
+        <th>Size, m²</th>
+        <th>Year</th>
+        <th>Price, €</th>
+        <th>Floor</th>
+    </tr>
+    @foreach (var realEstateProperty in this.Model)
+    {
+        <tr>
+            <td>@realEstateProperty.District</td>
+            <td>@realEstateProperty.BuildingType</td>
+            <td>@realEstateProperty.PropertyType</td>
+            <td>@realEstateProperty.Size m²</td>
+            <td>
+                @realEstateProperty.Year
+                @if (realEstateProperty.Year.HasValue)
+                {
+                        @:г.
+                }
+            </td>
+            <td>@realEstateProperty.Price €</td>
+            <td>
+                @if (realEstateProperty.Floor != "0  /0")
+                {
+                    @realEstateProperty.Floor
+                }
+            </td>
+        </tr>
+    }
+</table>

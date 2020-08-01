@@ -5,22 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RealEstates.Services;
 using RealEstates.Web.Models;
 
 namespace RealEstates.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IDistrictService districtService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IDistrictService districtService)
         {
-            _logger = logger;
+            this.districtService = districtService;
         }
 
+        //Methodite v controllera vryshtat specialen type IActionResult, kojto e chast ot ASP.NET Core technologiqta:
         public IActionResult Index()
         {
-            return View();
+            var districts = this.districtService.GetTopDistrictsByAveragePrice(1000);
+            return View(districts); //vrystha View-to ot papka Views, koeto se namira v papka Home i ima ime Index.cshtml!
         }
 
         public IActionResult Privacy()

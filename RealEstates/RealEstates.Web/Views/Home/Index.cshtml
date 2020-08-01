@@ -1,8 +1,33 @@
-﻿@{
+﻿@using RealEstates.Services.Models;
+@model IEnumerable<RealEstates.Services.Models.DistrictViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 @*class="display-4"*@>Welcome to Real Estates BG</h1>
+</div>
+<table class="table table-striped table-hover table-sm">
+    <tr>
+        <th>District</th>
+        <th>RealEstate Properties Count</th>
+        <th>Average Price</th>
+        <th>Average Price Per m2</th>
+        <th>Min Price</th>
+        <th>Max Price</th>
+    </tr>
+    @foreach (DistrictViewModel district in this.Model.Where(x=>x.RealEstatePropertiesCount >= 20))
+    { 
+        <tr>
+            <td>@district.Name</td>
+            <td>@district.RealEstatePropertiesCount</td>
+            <td>@district.AveragePrice €</td>
+            <td>@district.AveragePricePerSquareMeter €/m²</td>
+            <td>@district.MinPrice €</td>
+            <td>@district.MaxPrice €</td>
+        </tr>
+    }
+</table>
+<div>
+    <p>It is @DateTime.Now.DayOfWeek!!!</p>
 </div>

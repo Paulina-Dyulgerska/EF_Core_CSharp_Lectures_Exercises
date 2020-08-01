@@ -38,7 +38,7 @@ namespace RealEstates.ConsoleApplication
 
             foreach (var district in districts)
             {
-                Console.WriteLine($"{district.Name} => Price: {district.minPrice} - {district.maxPrice}; " +
+                Console.WriteLine($"{district.Name} => Price: {district.MinPrice} - {district.MaxPrice}; " +
                     $"AveragePrice: {district.AveragePrice:0.00}; " +
                     $"AveragePrice for m²: {district.AveragePricePerSquareMeter:0.00}; " +
                     $"Count: {district.RealEstatePropertiesCount}");

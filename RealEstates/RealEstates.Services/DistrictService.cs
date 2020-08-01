@@ -11,7 +11,7 @@ namespace RealEstates.Services
     public class DistrictService : IDistrictService
     {
         private readonly RealEstateContext db;
-
+  
         public DistrictService(RealEstateContext dbContext)
         {
             this.db = dbContext;

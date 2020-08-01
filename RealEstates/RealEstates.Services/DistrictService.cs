@@ -43,10 +43,10 @@ namespace RealEstates.Services
             return d => new DistrictViewModel
             {
                 Name = d.Name,
-                AveragePrice = d.RealEstateProperties.Average(p => p.Price), 
-                AveragePricePerSquareMeter = d.RealEstateProperties.Average(p => (double)p.Price / p.Size),
-                maxPrice = d.RealEstateProperties.Max(p => p.Price),
-                minPrice = d.RealEstateProperties.Min(p => p.Price),
+                AveragePrice = Math.Round(d.RealEstateProperties.Average(p => p.Price)), 
+                AveragePricePerSquareMeter = Math.Round(d.RealEstateProperties.Average(p => (double)p.Price / p.Size)),
+                MaxPrice = d.RealEstateProperties.Max(p => p.Price),
+                MinPrice = d.RealEstateProperties.Min(p => p.Price),
                 RealEstatePropertiesCount = d.RealEstateProperties.Count,
             };
         }

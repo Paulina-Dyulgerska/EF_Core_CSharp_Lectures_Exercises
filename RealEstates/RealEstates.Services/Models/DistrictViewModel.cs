@@ -4,9 +4,9 @@
     {
         public string Name { get; set; }
 
-        public int minPrice { get; set; }
+        public int MinPrice { get; set; }
 
-        public int maxPrice { get; set; }
+        public int MaxPrice { get; set; }
 
         public double AveragePrice { get; set; }
 

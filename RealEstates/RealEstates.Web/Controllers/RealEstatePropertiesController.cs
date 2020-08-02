@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstates.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace RealEstates.Web.Controllers
             return this.View(realEstateProperties);
         }
 
+        //[Authorize()] //usera trqbwa da se e lognal,za da vijda tazi stranica.
+        //[Authorize(Roles = "Moderator")] //usera trqbwa da se e lognal kato Moderator,za da vijda tazi stranica.
         public IActionResult DoSearch(int minPrice, int maxPrice)
         {
             //if (!this.User.IsInRole("Admin"))

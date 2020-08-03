@@ -77,7 +77,6 @@
                     Pages = b.Pages,
                 })
                 .ToArray()
-                //.OrderBy(b => b.Date)
                 .OrderByDescending(b => b.Pages)
                 .ThenByDescending(b => b.Date)
                 .Take(10)

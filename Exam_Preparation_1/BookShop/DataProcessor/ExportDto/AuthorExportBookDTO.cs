@@ -7,10 +7,12 @@ namespace BookShop.DataProcessor.ExportDto
         [JsonProperty("BookName")]
         public string BookName { get; set; }
 
-        [JsonIgnore]
-        public decimal BookRealPrice { get; set; }
+        //[JsonIgnore]
+        //public decimal BookRealPrice { get; set; }
 
         [JsonProperty("BookPrice")]
-        public string BookPrice => $"{this.BookRealPrice.ToString():f2}";
+        //public string BookPrice => $"{this.BookRealPrice.ToString():f2}";
+        public string BookPrice { get; set; }
+
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BookShop.DataProcessor.ExportDto
 {
-   public class AuthorExportDTO
+    public class AuthorExportDTO
     {
         [JsonProperty("AuthorName")]
         public string AuthorName { get; set; }

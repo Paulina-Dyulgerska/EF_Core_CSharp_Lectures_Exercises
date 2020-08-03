@@ -61,38 +61,40 @@
 
         public static string ExportOldestBooks(BookShopContext context, DateTime date)
         {
-
-            //        Export top 10 oldest books that are published before the given date and are of type science.
-            //            For each book select its name, date (in format "d") and pages.Sort them by pages in 
-            //                descending order and then by date in descending order.
+            // Export top 10 oldest books that are published before the given date and are of type science.
+            // For each book select its name, date (in format "d") and pages.Sort them by pages in 
+            // descending order and then by date in descending order.
             //NOTE: Before the orders, materialize the query (This is issue by Microsoft in InMemory database library)!!!
 
             var books = context.Books
-                .Where(b => b.PublishedOn < date && b.Genre == (Genre)Enum.Parse(typeof(Genre), "Science"))
-                .Select(b=>new BookExportDTO
+                //.Where(b => b.PublishedOn < date && b.Genre == (Genre)Enum.Parse(typeof(Genre), "Science"))
+                .Where(b => b.PublishedOn < date && b.Genre == Genre.Science)
+                .Select(b => new BookExportDTO
                 {
-                     Date = b.PublishedOn.ToString("MM/dd/yyyy"),
-                     Name = b.Name,
-                     Pages = b.Pages,
+                    Date = b.PublishedOn.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture),
+                    //Date = b.PublishedOn.ToString("d", CultureInfo.InvariantCulture),
+                    Name = b.Name,
+                    Pages = b.Pages,
                 })
                 .ToArray()
-                .OrderBy(b=>b.Date)
-                .OrderByDescending(b=>b.Pages)
-                .ThenByDescending(b=>b.Date)
+                .OrderBy(b => b.Date)
+                .OrderByDescending(b => b.Pages)
+                .ThenByDescending(b => b.Date)
                 .Take(10)
-                .ToArray()
-                ;
+                .ToArray();
 
             XmlSerializer serializer = new XmlSerializer(typeof(BookExportDTO[]), new XmlRootAttribute("Books"));
             XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
             namespaces.Add(string.Empty, string.Empty);
+
             var xml = new StringBuilder();
+
             using (var writer = new StringWriter(xml))
             {
                 serializer.Serialize(writer, books, namespaces);
             };
 
-            return xml.ToString();
+            return xml.ToString().TrimEnd();
         }
     }
 }

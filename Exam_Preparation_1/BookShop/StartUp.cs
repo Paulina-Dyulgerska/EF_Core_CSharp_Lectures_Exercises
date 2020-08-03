@@ -16,18 +16,19 @@
         {
             var context = new BookShopContext();
 
-            //ResetDatabase(context, shouldDropDatabase: true);
+            ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
-            //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
+            ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
 
             ExportEntities(context, projectDir + @"ExportResults/");
 
-            //using (var transaction = context.Database.BeginTransaction())
-            //{
-            //    transaction.Rollback();
-            //}
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                transaction.Rollback();
+            }
+
         }
 
         private static void ImportEntities(BookShopContext context, string baseDir, string exportDir)
@@ -52,11 +53,11 @@
             Console.WriteLine(exportProcrastinatedProjects);
             File.WriteAllText(exportDir + "Actual Result - ExportMostCraziestAuthors.json", exportProcrastinatedProjects);
 
-            //DateTime dateTime = DateTime.ParseExact("25/01/2017", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime dateTime = DateTime.ParseExact("25/01/2017", "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            //var exportTopMovies = DataProcessor.Serializer.ExportOldestBooks(context, dateTime);
-            //Console.WriteLine(exportTopMovies);
-            //File.WriteAllText(exportDir + "Actual Result - ExportOldestBooks.xml", exportTopMovies);
+            var exportTopMovies = DataProcessor.Serializer.ExportOldestBooks(context, dateTime);
+            Console.WriteLine(exportTopMovies);
+            File.WriteAllText(exportDir + "Actual Result - ExportOldestBooks.xml", exportTopMovies);
         }
 
         private static void ResetDatabase(BookShopContext context, bool shouldDropDatabase = false)

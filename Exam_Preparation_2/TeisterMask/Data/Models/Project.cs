@@ -20,7 +20,6 @@ namespace TeisterMask.Data.Models
         [Required]
         public DateTime OpenDate { get; set; }
 
-        [Required]
         public DateTime? DueDate { get; set; }
 
         public virtual ICollection<Task> Tasks { get; set; }

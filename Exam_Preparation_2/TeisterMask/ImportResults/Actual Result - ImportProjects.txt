@@ -1,17 +1,7 @@
 Invalid data!
 Invalid data!
 Successfully imported project - America with 2 tasks.
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Invalid data!
-Successfully imported project - Hyster-Yale with 0 tasks.
+Successfully imported project - Hyster-Yale with 10 tasks.
 Invalid data!
 Invalid data!
 Invalid data!
@@ -141,8 +131,7 @@ Invalid data!
 Invalid data!
 Invalid data!
 Successfully imported project - National Beverage Corp. with 1 tasks.
-Invalid data!
-Successfully imported project - China Lending Corporation with 0 tasks.
+Successfully imported project - China Lending Corporation with 1 tasks.
 Invalid data!
 Invalid data!
 Invalid data!
@@ -181,12 +170,8 @@ Invalid data!
 Invalid data!
 Invalid data!
 Invalid data!
-Invalid data!
-Invalid data!
-Successfully imported project - Key Energy Services, Inc. with 0 tasks.
-Invalid data!
-Invalid data!
-Successfully imported project - Alamos Gold Inc. with 0 tasks.
+Successfully imported project - Key Energy Services, Inc. with 2 tasks.
+Successfully imported project - Alamos Gold Inc. with 2 tasks.
 Invalid data!
 Invalid data!
 Invalid data!

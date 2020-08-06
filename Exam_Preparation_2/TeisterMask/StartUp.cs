@@ -29,17 +29,17 @@
 
         private static void ImportEntities(TeisterMaskContext context,string baseDir, string exportDir)
         {
-            var projects =
-                DataProcessor.Deserializer.ImportProjects(context,
-                    File.ReadAllText(baseDir + "projects.xml"));
+            //var projects =
+            //    DataProcessor.Deserializer.ImportProjects(context,
+            //        File.ReadAllText(baseDir + "projects.xml"));
 
-            PrintAndExportEntityToFile(projects, exportDir + "Actual Result - ImportProjects.txt");
+            //PrintAndExportEntityToFile(projects, exportDir + "Actual Result - ImportProjects.txt");
 
-            //var employees =
-            // DataProcessor.Deserializer.ImportEmployees(context,
-            //     File.ReadAllText(baseDir + "employees.json"));
+            var employees =
+             DataProcessor.Deserializer.ImportEmployees(context,
+                 File.ReadAllText(baseDir + "employees.json"));
 
-            //PrintAndExportEntityToFile(employees, exportDir + "Actual Result - ImportEmployees.txt");
+            PrintAndExportEntityToFile(employees, exportDir + "Actual Result - ImportEmployees.txt");
         }
 
         private static void ExportEntities(TeisterMaskContext context, string exportDir)

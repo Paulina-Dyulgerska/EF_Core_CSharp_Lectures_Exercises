@@ -60,7 +60,8 @@
                 {
                     Name = projectDto.Name,
                     OpenDate = projectOpenDate,
-                    DueDate = projectDto.DueDate == null ? (DateTime?)null : projectDueDate,
+                    DueDate = (projectDto.DueDate == null || projectDto.DueDate == string.Empty) 
+                                    ? (DateTime?)null : projectDueDate,
                 };
 
                 foreach (var taskDto in projectDto.Tasks)
@@ -79,10 +80,14 @@
                     HasValidDate(taskDto.OpenDate, out DateTime taskOpenDate);
                     HasValidDate(taskDto.DueDate, out DateTime taskDueDate);
 
-                    if (taskOpenDate < projectToAdd.OpenDate 
-                        || (taskDueDate > projectToAdd.DueDate && projectToAdd.DueDate != null)
-                        || taskOpenDate > taskDueDate //da go iztriq ako ne stawa
-                        )
+                    if (taskOpenDate < projectToAdd.OpenDate
+                        || taskOpenDate > taskDueDate) //da go iztriq ako ne stawa
+                    {
+                        result.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    if ((taskDueDate > projectToAdd.DueDate && projectDto.DueDate != string.Empty))
                     {
                         result.AppendLine(ErrorMessage);
                         continue;
@@ -98,6 +103,7 @@
                     };
 
                     projectToAdd.Tasks.Add(taskToAdd);
+                    //context.Tasks.Add(taskToAdd);
                 }
 
                 projectsToAdd.Add(projectToAdd);
@@ -109,7 +115,7 @@
 
             context.Projects.AddRange(projectsToAdd);
 
-            //context.SaveChanges();
+            context.SaveChanges();
 
             return result.ToString().TrimEnd();
         }
@@ -152,23 +158,32 @@
                 {
                     var taskToAdd = context.Tasks.FirstOrDefault(t => t.Id == taskId);
 
-                    if (taskToAdd != null)
+                    if (taskToAdd == null)
                     {
-                        var employeeTask = new EmployeeTask
-                        {
-                            Employee = employeeToAdd,
-                            Task = taskToAdd,
-                        };
-
-                        context.EmployeesTasks.Add(employeeTask);
+                        result.AppendLine(ErrorMessage);
+                        continue;
                     }
 
+                    var employeeTask = new EmployeeTask
+                    {
+                        Employee = employeeToAdd,
+                        Task = taskToAdd,
+                    };
+
+                    employeeToAdd.EmployeesTasks.Add(employeeTask);
+                    //context.EmployeesTasks.Add(employeeTask);
                 }
 
                 employeesToAdd.Add(employeeToAdd);
+
+                result.AppendLine(String.Format(SuccessfullyImportedEmployee,
+                    employeeToAdd.Username,
+                    employeeToAdd.EmployeesTasks.Count));
             }
 
-            //context.SaveChanges();
+            context.Employees.AddRange(employeesToAdd);
+
+            context.SaveChanges();
 
             return result.ToString().TrimEnd();
         }

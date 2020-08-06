@@ -5,7 +5,7 @@ namespace TeisterMask.DataProcessor.ImportDto
     public class EmployeeInputDto
     {
         [Required, MinLength(3), MaxLength(40)]
-        [RegularExpression("[a-zA-Z0-9]")]
+        [RegularExpression("[a-zA-Z0-9]+")]
         public string Username { get; set; }
 
         [Required]

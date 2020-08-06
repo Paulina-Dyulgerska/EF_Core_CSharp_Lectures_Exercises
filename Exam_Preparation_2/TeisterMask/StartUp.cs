@@ -13,11 +13,11 @@
         {
             var context = new TeisterMaskContext();
 
-            ResetDatabase(context, shouldDropDatabase: true);
+            //ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
-            //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
+            ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
 
             //ExportEntities(context, projectDir + @"ExportResults/");
 
@@ -35,11 +35,11 @@
 
             PrintAndExportEntityToFile(projects, exportDir + "Actual Result - ImportProjects.txt");
 
-            var employees =
-             DataProcessor.Deserializer.ImportEmployees(context,
-                 File.ReadAllText(baseDir + "employees.json"));
+            //var employees =
+            // DataProcessor.Deserializer.ImportEmployees(context,
+            //     File.ReadAllText(baseDir + "employees.json"));
 
-            PrintAndExportEntityToFile(employees, exportDir + "Actual Result - ImportEmployees.txt");
+            //PrintAndExportEntityToFile(employees, exportDir + "Actual Result - ImportEmployees.txt");
         }
 
         private static void ExportEntities(TeisterMaskContext context, string exportDir)

@@ -24,7 +24,5 @@ namespace TeisterMask.Data.Models
 
         public virtual ICollection<Task> Tasks { get; set; }
 
-        //Name - text with length[2, 40] (required)
-
     }
 }

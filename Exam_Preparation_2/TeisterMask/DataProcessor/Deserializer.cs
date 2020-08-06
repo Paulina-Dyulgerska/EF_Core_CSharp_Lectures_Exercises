@@ -60,17 +60,12 @@
                 {
                     Name = projectDto.Name,
                     OpenDate = projectOpenDate,
-                    DueDate = (projectDto.DueDate == null || projectDto.DueDate == string.Empty) 
+                    DueDate = (projectDto.DueDate == null || projectDto.DueDate == string.Empty)
                                     ? (DateTime?)null : projectDueDate,
                 };
 
                 foreach (var taskDto in projectDto.Tasks)
                 {
-                    //•	If there are any validation errors for the task entity(such as invalid name, 
-                    //open or due date are missing, task open date is before project open 
-                    //date or task due date is after project due date), do not import it(only the task itself, 
-                    //not the whole project) and append an error message to the method output.
-                    //NOTE: Dates will be in format dd/ MM / yyyy, do not forget to use CultureInfo.InvariantCulture
                     if (!IsValid(taskDto))
                     {
                         result.AppendLine(ErrorMessage);
@@ -80,14 +75,13 @@
                     HasValidDate(taskDto.OpenDate, out DateTime taskOpenDate);
                     HasValidDate(taskDto.DueDate, out DateTime taskDueDate);
 
-                    if (taskOpenDate < projectToAdd.OpenDate
-                        || taskOpenDate > taskDueDate) //da go iztriq ako ne stawa
+                    if (taskOpenDate < projectToAdd.OpenDate || taskOpenDate > taskDueDate)
                     {
                         result.AppendLine(ErrorMessage);
                         continue;
                     }
 
-                    if ((taskDueDate > projectToAdd.DueDate && projectDto.DueDate != string.Empty))
+                    if (taskDueDate > projectToAdd.DueDate && projectDto.DueDate != string.Empty)
                     {
                         result.AppendLine(ErrorMessage);
                         continue;

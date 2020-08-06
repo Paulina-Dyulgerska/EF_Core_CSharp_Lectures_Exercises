@@ -1,6 +1,7 @@
 ﻿namespace TeisterMask.Data
 {
     using Microsoft.EntityFrameworkCore;
+    using TeisterMask.Data.Models;
 
     public class TeisterMaskContext : DbContext
     {
@@ -8,6 +9,14 @@
 
         public TeisterMaskContext(DbContextOptions options)
             : base(options) { }
+
+        public DbSet<Employee>  Employees { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Task> Tasks { get; set; }
+
+        public DbSet<EmployeeTask> EmployeesTasks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,6 +29,8 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<EmployeeTask>()
+                .HasKey(x => new { x.EmployeeId, x.TaskId });
         }
     }
 }

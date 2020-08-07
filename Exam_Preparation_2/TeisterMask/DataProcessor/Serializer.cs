@@ -20,15 +20,15 @@
         {
             ////taka minava v Judge, no ne minawa pri men, da iztriq ToList()-ite, za da mi raboti:
             var projects = context.Projects
-                .Where(p => p.Tasks.Count > 0)
                 .ToArray() //tova go pisha samo za da mine v DB-a, kojto se polzwa v Judge
+                .Where(p => p.Tasks.Count > 0)
                 .Select(p => new ProjectExportDto
                 {
                     ProjectName = p.Name,
                     TasksCount = p.Tasks.Count,
                     HasEndDate = p.DueDate != null ? "Yes" : "No",
                     Tasks = p.Tasks
-                    .ToArray() //tova go pisha samo za da mine v DB-a, kojto se polzwa v Judge
+                    //.ToArray() //tova go pisha samo za da mine v DB-a, kojto se polzwa v Judge
                     .Select(t => new TaskExportDto
                     {
                         Name = t.Name,
@@ -50,7 +50,6 @@
             using (var writer = new StringWriterUtf8(xml))
             {
                 serializer.Serialize(writer, projects, namespases);
-
             }
             return xml.ToString().TrimEnd();
         }
@@ -112,7 +111,10 @@
                           OpenDate = t.OpenDate.ToString("d", CultureInfo.InvariantCulture),
                           DueDate = t.DueDate.ToString("d", CultureInfo.InvariantCulture),
                           LabelType = Enum.GetName(typeof(LabelType), t.LabelType),
+                          //moje i taka da se vzeme stojnostta na enum-a:
+                          //LabelType = t.LabelType.ToString(),
                           ExecutionType = Enum.GetName(typeof(ExecutionType), t.ExecutionType),
+                          //ExecutionType = t.ExecutionType.ToString(),
                       })
                       .ToList()
                   })

@@ -17,9 +17,11 @@ namespace TeisterMask.DataProcessor.ImportDto
         public string DueDate { get; set; }
 
         [Required]
+        [Range(0, 3)]
         public int ExecutionType { get; set; }
 
         [Required]
+        [Range(0, 4)]
         public int LabelType { get; set; }
 
     }

@@ -13,11 +13,11 @@
         {
             var context = new TeisterMaskContext();
 
-            ResetDatabase(context, shouldDropDatabase: true);
+            //ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
-            ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
+            //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
 
             ExportEntities(context, projectDir + @"ExportResults/");
 
@@ -48,10 +48,10 @@
             Console.WriteLine(exportProcrastinatedProjects);
             File.WriteAllText(exportDir + "Actual Result - ExportProjectWithTheirTasks.xml", exportProcrastinatedProjects);
 
-            DateTime dateTime = DateTime.ParseExact("25/01/2018", "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            var exportTopMovies = DataProcessor.Serializer.ExportMostBusiestEmployees(context, dateTime);
-            Console.WriteLine(exportTopMovies);
-            File.WriteAllText(exportDir + "Actual Result - ExportMostBusiestEmployees.json", exportTopMovies);
+            //DateTime dateTime = DateTime.ParseExact("25/01/2018", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //var exportTopMovies = DataProcessor.Serializer.ExportMostBusiestEmployees(context, dateTime);
+            //Console.WriteLine(exportTopMovies);
+            //File.WriteAllText(exportDir + "Actual Result - ExportMostBusiestEmployees.json", exportTopMovies);
         }
 
         private static void ResetDatabase(TeisterMaskContext context, bool shouldDropDatabase = false)

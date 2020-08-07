@@ -291,7 +291,7 @@ namespace CarDealer
                     };
 
                     currentCar.PartCars.Add(partCar);
-                    context.PartCars.Add(partCar);
+                    context.PartCars.Add(partCar); //tova e izlishno, ako go imam gorniq red!
                 }
                 context.Cars.Add(currentCar);
             }

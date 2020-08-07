@@ -94,6 +94,12 @@
             //    .Take(10)
             //    .ToList();
 
+
+            //Taka moga da si izmykvam dannite za wseki edin Task ot mejdinnata tablica EmployeeTask i 
+            //posle rabotq ne s EmployeeTask, a s chist Task!!!!
+            //Tova moga da go pravq za vseki takyv sluchaj, v kojto mi trqbwat samo ednite obekti, v
+            //sluchaq mi trqbwa samo Task, zashtoto Employee veche
+            //e qsno koe e, poneje se namiram v tozi Employee weche i vzimam samo negovite Tasks tuk!!!!
             ////taka minava i v Judge, i pri men:
             var employees = context.Employees
                   .Where(e => e.EmployeesTasks.Any(t => t.Task.OpenDate >= date))
@@ -102,7 +108,8 @@
                       e.Username,
                       Tasks = e.EmployeesTasks
                       .Where(et => et.Task.OpenDate >= date)
-                      .Select(et => et.Task) //zaradi towa minawa v Judge, bez da trqbwa da pisha ToList() tuk!!!
+                      .Select(et => et.Task) //izmykvam dannite za wseki edin Task ot mejdinnata tablica EmployeeTask!!!!
+                                             //zaradi towa minawa v Judge, bez da trqbwa da pisha ToList() tuk!!!
                       .OrderByDescending(t => t.DueDate)
                       .ThenBy(t => t.Name)
                       .Select(t => new

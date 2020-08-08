@@ -230,11 +230,12 @@
 
             foreach (var purchaseDto in purchasesDtos)
             {
-                var hasValidPurchaseDate = DateTime.TryParseExact(purchaseDto.Date,
-                                                                  "dd/MM/yyyy HH:mm",
-                                                                  CultureInfo.InvariantCulture,
-                                                                  DateTimeStyles.None,
-                                                                  out DateTime purchaseDate);
+                var hasValidPurchaseDate = DateTime
+                    .TryParseExact(purchaseDto.Date,
+                        "dd/MM/yyyy HH:mm",
+                        CultureInfo.InvariantCulture,
+                        DateTimeStyles.None,
+                        out DateTime purchaseDate);
 
                 if (!IsValid(purchaseDto) || !hasValidPurchaseDate)
                 {

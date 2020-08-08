@@ -145,7 +145,7 @@
                 {
                     NamingStrategy = new DefaultNamingStrategy()
                 },
-                NullValueHandling = NullValueHandling.Ignore, //!!! 
+                NullValueHandling = NullValueHandling.Ignore, // !!! 
                 Culture = CultureInfo.InvariantCulture,
                 Formatting = Formatting.Indented,
             };

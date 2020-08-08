@@ -65,6 +65,7 @@
                 NullValueHandling = NullValueHandling.Ignore,
                 Culture = CultureInfo.InvariantCulture,
                 Formatting = Formatting.Indented,
+                //DateFormatString = "dd-MM-yyyy",
             };
 
             ////taka minava v Judge, no ne minawa pri men:

@@ -15,19 +15,17 @@
 
             Mapper.Initialize(config => config.AddProfile<VaporStoreProfile>());
 
-            //ResetDatabase(context, shouldDropDatabase: true);
+            ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
-            //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
+            ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
             ExportEntities(context, projectDir + @"ImportResults/");
 
             using (var transaction = context.Database.BeginTransaction())
             {
                 transaction.Rollback();
             }
-
-
         }
 
         private static void ExportEntities(VaporStoreDbContext context, string exportDir)

@@ -50,11 +50,11 @@ namespace RealEstates.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //if (!optionsBuilder.IsConfigured)
-            //{
-            //    optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=RealEstate;Integrated Security=true;");
-            //    //TODO ?????
-            //}
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=RealEstate;Integrated Security=true;");
+                //TODO ?????
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
